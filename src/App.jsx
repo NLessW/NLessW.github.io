@@ -10,7 +10,6 @@ import Footer from './components/Footer';
 import CanvasBackground from './components/CanvasBackground';
 import Terminal from './components/Terminal';
 import { USERNAME } from './constants';
-// Import static data (generated at build time)
 import staticRepos from './data/repos.json';
 
 function App() {
@@ -21,14 +20,10 @@ function App() {
     const toggleTerminal = () => setIsTerminalOpen(!isTerminalOpen);
 
     useEffect(() => {
-        // Use static data instead of fetching at runtime
-        // This avoids exposing the GitHub Token in the client bundle
         if (staticRepos && staticRepos.length > 0) {
             setRepos(staticRepos);
             setLoading(false);
         } else {
-            // Fallback: Fetch without token (rate limited) or show empty
-            // For now, we assume build script ran successfully
             console.log('No static data found, using empty state or fetch fallback');
             setLoading(false);
         }

@@ -36,10 +36,6 @@ const Hero = ({ toggleTerminal, loading }) => {
         setText(cur.substring(0, cIdx));
     }, [cIdx, pIdx]);
 
-    // GitHub fetching status logic moved to parent or appropriate place if needed,
-    // but here we just show the static "Connecting..." or fetch from parent.
-    // For now, static layout as per HTML. The status update logic will be in App/Projects.
-
     return (
         <header id="home" className="min-h-screen flex items-center justify-center px-6 pt-20 relative">
             <div className="max-w-4xl w-full text-center md:text-left z-10">

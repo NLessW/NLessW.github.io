@@ -88,7 +88,6 @@ const Projects = ({ repos, loading }) => {
 };
 
 const RepoCard = ({ repo }) => {
-    // Logic from original: stats without merge for the card
     const stats = repo.languageStats || {};
     const total = Object.values(stats).reduce((a, b) => a + b, 0);
     const sortedStats = Object.entries(stats)

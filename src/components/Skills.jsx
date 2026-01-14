@@ -28,7 +28,6 @@ const Skills = ({ repos, loading }) => {
 
     useEffect(() => {
         if (sortedLangs.length > 0) {
-            // Trigger animation after render
             const timer = setTimeout(() => {
                 const widths = {};
                 sortedLangs.forEach(([lang, bytes]) => {
