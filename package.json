@@ -5,7 +5,8 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
+        "update-data": "node scripts/fetch-data.js",
+        "build": "npm run update-data && vite build",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d dist",
         "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
@@ -21,6 +22,7 @@
         "@types/react-dom": "^18.2.7",
         "@vitejs/plugin-react": "^4.0.3",
         "autoprefixer": "^10.4.14",
+        "dotenv": "^17.2.3",
         "eslint": "^8.45.0",
         "eslint-plugin-react": "^7.32.2",
         "eslint-plugin-react-hooks": "^4.6.0",

@@ -1,6 +1,6 @@
 // src/constants.js
 export const USERNAME = 'NLessW';
-export const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
+// export const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN; // Removed for security
 
 export const langColors = {
     JavaScript: '#f7df1e',

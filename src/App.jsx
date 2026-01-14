@@ -9,7 +9,9 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CanvasBackground from './components/CanvasBackground';
 import Terminal from './components/Terminal';
-import { USERNAME, GITHUB_TOKEN } from './constants';
+import { USERNAME } from './constants';
+// Import static data (generated at build time)
+import staticRepos from './data/repos.json';
 
 function App() {
     const [isTerminalOpen, setIsTerminalOpen] = useState(false);
@@ -19,40 +21,17 @@ function App() {
     const toggleTerminal = () => setIsTerminalOpen(!isTerminalOpen);
 
     useEffect(() => {
-        const fetchGitHubData = async () => {
-            const headers = { Accept: 'application/vnd.github.v3+json' };
-            if (GITHUB_TOKEN) headers['Authorization'] = `token ${GITHUB_TOKEN}`;
-
-            try {
-                const res = await fetch(`https://api.github.com/users/${USERNAME}/repos?sort=updated&per_page=100`, {
-                    headers,
-                });
-                if (!res.ok) throw new Error(res.status === 403 ? 'Rate Limit' : 'Network Error');
-
-                let data = await res.json();
-                data = data.filter((r) => !r.fork);
-
-                // Fetch languages for each repo
-                const repoPromises = data.map(async (repo) => {
-                    try {
-                        const langRes = await fetch(repo.languages_url, { headers });
-                        return { ...repo, languageStats: await langRes.json() };
-                    } catch {
-                        return { ...repo, languageStats: {} };
-                    }
-                });
-
-                const detailedRepos = await Promise.all(repoPromises);
-                setRepos(detailedRepos);
-            } catch (error) {
-                console.error(error);
-                // Handle error state if needed
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchGitHubData();
+        // Use static data instead of fetching at runtime
+        // This avoids exposing the GitHub Token in the client bundle
+        if (staticRepos && staticRepos.length > 0) {
+            setRepos(staticRepos);
+            setLoading(false);
+        } else {
+            // Fallback: Fetch without token (rate limited) or show empty
+            // For now, we assume build script ran successfully
+            console.log('No static data found, using empty state or fetch fallback');
+            setLoading(false);
+        }
     }, []);
 
     useEffect(() => {
