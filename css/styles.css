@@ -1,0 +1,62 @@
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0b1120;
+}
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #00ff9d;
+}
+
+.glass {
+    background: rgba(30, 41, 59, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Terminal Styling - Fixed */
+#terminal-overlay {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95);
+}
+#terminal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: scale(1);
+}
+
+.loader {
+    border-top-color: #00ff9d;
+    -webkit-animation: spinner 1.5s linear infinite;
+    animation: spinner 1.5s linear infinite;
+}
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.stacked-bar {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border-radius: 9999px;
+    overflow: hidden;
+}
+.stacked-segment {
+    height: 100%;
+    transition: width 1s ease-out;
+    position: relative;
+}
+.stacked-segment:hover {
+    opacity: 0.8;
+}
