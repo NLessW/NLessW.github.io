@@ -50,7 +50,7 @@ async function fetchGitHubData() {
         const detailedRepos = await Promise.all(repoPromises);
 
         // 3. Save to file
-        const outputPath = path.join(__dirname, 'src', 'data', 'repos.json');
+        const outputPath = path.join(__dirname, '../src/data/repos.json');
 
         // Ensure directory exists
         const dir = path.dirname(outputPath);

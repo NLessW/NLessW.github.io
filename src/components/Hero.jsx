@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { USERNAME } from '../constants';
 
-const phrases = ['Firmware Developer', 'Full-Stack Developer', 'IoT Enthusiast'];
+const phrases = ['Full-Stack Developer', 'Firmware Developer', 'Artificial Intelligence'];
 
 const Hero = ({ toggleTerminal, loading }) => {
     const [text, setText] = useState('');

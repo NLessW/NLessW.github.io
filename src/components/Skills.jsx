@@ -159,6 +159,23 @@ const Skills = ({ repos, loading }) => {
                                         />
                                     </div>
                                 </div>
+                                <div>
+                                    <h4 className="text-sm font-bold text-slate-400 font-mono mb-4 uppercase tracking-widest border-b border-slate-800 pb-2">
+                                        Data & AI
+                                    </h4>
+                                    <div className="flex flex-wrap gap-2">
+                                        <SkillBadge
+                                            text="TensorFlow"
+                                            colorClass="text-orange-200"
+                                            hoverBorder="hover:border-orange-400"
+                                        />
+                                        <SkillBadge
+                                            text="AI"
+                                            colorClass="text-orange-200"
+                                            hoverBorder="hover:border-orange-400"
+                                        />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
