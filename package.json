@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "dev": "vite",
+        "dev": "npm run update-data && vite",
         "update-data": "node scripts/fetch-data.js",
         "build": "npm run update-data && vite build",
         "predeploy": "npm run build",
