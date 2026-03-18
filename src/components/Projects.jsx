@@ -95,23 +95,49 @@ const RepoCard = ({ repo }) => {
         .slice(0, 4);
 
     return (
-        <a href={repo.html_url} target="_blank" rel="noreferrer" className="group relative block h-full">
+        <div className="group relative block h-full">
             <div className="h-full bg-card border border-slate-800 rounded-xl p-6 hover:border-neon transition-all duration-300 flex flex-col shadow-lg">
                 <div className="flex justify-between items-start mb-4">
                     <div className="text-neon text-2xl">
-                        <i className="fa-regular fa-folder-open"></i>
+                        <a
+                            href={repo.html_url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="hover:text-white transition-colors"
+                        >
+                            <i className="fa-regular fa-folder-open"></i>
+                        </a>
                     </div>
                     <div className="text-slate-500 text-xs font-mono">
                         <i className="fa-regular fa-clock mr-1"></i>
                         {new Date(repo.updated_at).toISOString().split('T')[0]}
                     </div>
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-neon transition line-clamp-1">
-                    {repo.name}
-                </h3>
+
+                <a href={repo.html_url} target="_blank" rel="noreferrer" className="block">
+                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-neon transition line-clamp-1">
+                        {repo.name}
+                    </h3>
+                </a>
+
                 <p className="text-slate-400 text-sm mb-4 line-clamp-2 flex-grow h-10">
                     {repo.description || 'No description provided.'}
                 </p>
+
+                {repo.homepage && (
+                    <div className="mb-4 pt-2">
+                        <a
+                            href={repo.homepage}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center text-xs font-mono text-neon hover:text-white transition-colors border border-neon/30 hover:border-neon rounded px-2 py-1 bg-neon/5 hover:bg-neon/10"
+                        >
+                            <i className="fa-solid fa-rocket mr-2"></i>
+                            Live Demo
+                        </a>
+                    </div>
+                )}
+
                 <div className="mt-auto pt-4 border-t border-slate-700/50">
                     <div className="stacked-bar h-2 bg-slate-800 mt-4 flex overflow-hidden rounded-full">
                         {total > 0 ? (
@@ -151,7 +177,7 @@ const RepoCard = ({ repo }) => {
                     </div>
                 </div>
             </div>
-        </a>
+        </div>
     );
 };
 
